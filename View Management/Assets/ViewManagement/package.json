@@ -2,14 +2,17 @@
   "name": "com.danielrusnac.viewmanagement",
   "version": "1.0.0",
   "displayName": "View Management",
-  "author": {
+  "author": 
+  {
     "name": "Daniel Rusnac",
     "email": "daniel.rusnac@trymygames.com"
   },
-  "dependencies": {
+  "dependencies": 
+  {
     "com.danielrusnac.soarchitecture": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=/SO Architecture/Assets/SOArchitecture"
   },
-  "samples": [
+  "samples": 
+  [
     {
       "displayName": "Dotween Animation Samples",
       "description": "Contains sample animations for view elements using DoTween.",
