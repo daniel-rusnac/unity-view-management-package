@@ -1,5 +1,5 @@
 {
-  "name": "com.trymygames.viewmanagement",
+  "name": "com.danielrusnac.viewmanagement",
   "version": "1.0.0",
   "displayName": "View Management",
   "author": {
@@ -8,8 +8,8 @@
   },
   "samples": [
     {
-      "displayName": "Animation Samples",
-      "description": "Contains sample animations for view elements.",
+      "displayName": "Dotween Animation Samples",
+      "description": "Contains sample animations for view elements using DoTween.",
       "path": "Samples/SampleAnimations"
     }
   ]
