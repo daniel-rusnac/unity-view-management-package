@@ -6,6 +6,9 @@
     "name": "Daniel Rusnac",
     "email": "daniel.rusnac@trymygames.com"
   },
+  "dependencies": {
+    "com.danielrusnac.soarchitecture": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=/SO Architecture/Assets/SOArchitecture"
+  },
   "samples": [
     {
       "displayName": "Dotween Animation Samples",
