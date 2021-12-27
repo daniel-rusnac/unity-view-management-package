@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TryMyGames.SOArchitecture.Channels;
+using SOArchitecture.Channels;
 using UnityEngine;
 
 namespace TryMyGames.ViewManagement

@@ -1,5 +1,5 @@
 ﻿using System;
-using TryMyGames.SOArchitecture.Channels;
+using SOArchitecture.Channels;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -58,7 +58,7 @@ namespace TryMyGames.ViewManagement
             animationsCompleted = 0;
             gameObject.SetActive(true);
             Lock();
-            
+
             foreach (ViewCallbacks initializer in viewListeners)
             {
                 initializer.OnShow();
@@ -93,12 +93,12 @@ namespace TryMyGames.ViewManagement
             void OnShown()
             {
                 Unlock();
-                
+
                 foreach (ViewCallbacks initializer in viewListeners)
                 {
                     initializer.OnShown();
                 }
-                
+
                 onShown?.Invoke();
                 onComplete?.Invoke();
             }
@@ -122,7 +122,7 @@ namespace TryMyGames.ViewManagement
 
             isShown = false;
             animationsCompleted = 0;
-            
+
             foreach (ViewCallbacks initializer in viewListeners)
             {
                 initializer.OnHide();
@@ -158,7 +158,7 @@ namespace TryMyGames.ViewManagement
             {
                 onComplete?.Invoke();
                 gameObject.SetActive(false);
-                
+
                 foreach (ViewCallbacks initializer in viewListeners)
                 {
                     initializer.OnHidden();
