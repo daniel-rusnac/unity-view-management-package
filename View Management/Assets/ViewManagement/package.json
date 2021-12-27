@@ -9,7 +9,7 @@
   },
   "dependencies": 
   {
-    "com.danielrusnac.soarchitecture": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=/SO Architecture/Assets/SOArchitecture"
+    "com.danielrusnac.soarchitecture": "1.1.0"
   },
   "samples": 
   [
