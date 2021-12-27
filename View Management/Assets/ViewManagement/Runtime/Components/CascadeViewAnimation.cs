@@ -10,8 +10,8 @@ namespace ViewManagement.Components
         private const float HIDE_SCALE = 0f;
         
         [SerializeField] private float showDuration = 0.3f;
-        [SerializeField] private float hideDuration;
-        [SerializeField] private float interval = 0.05f;
+        [SerializeField] private float hideDuration = 0.1f;
+        [SerializeField] private float interval = 0.1f;
         [SerializeField] private AnimationCurve showEase = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         [SerializeField] private AnimationCurve hideEase = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         [SerializeField] private Transform[] targets;
