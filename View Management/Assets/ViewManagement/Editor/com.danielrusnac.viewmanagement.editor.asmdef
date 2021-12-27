@@ -1,10 +1,12 @@
 {
-    "name": "com.danielrusnac.viewmanagement",
+    "name": "com.danielrusnac.viewmanagement.editor",
     "rootNamespace": "ViewManagement",
     "references": [
-        "GUID:ac004da094302b9418f0f8e8693d9732"
+        "GUID:de56c8383e05dc04b919fb7a127028c0"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

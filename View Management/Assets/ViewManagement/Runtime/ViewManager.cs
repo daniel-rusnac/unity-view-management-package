@@ -11,7 +11,7 @@ namespace ViewManagement
         [SerializeField] private View startView;
         [SerializeField] private View[] views;
 
-        private readonly Stack<View> activeViewsStack = new Stack<View>();
+        public readonly Stack<View> activeViewsStack = new Stack<View>();
         private readonly Dictionary<View, Action> actionByView = new Dictionary<View, Action>();
 
         private void Awake()
@@ -47,15 +47,7 @@ namespace ViewManagement
                 }
             }
         }
-
-        public void HideAll(bool immediate)
-        {
-            foreach (View view in views)
-            {
-                view.Hide(immediate);
-            }
-        }
-
+        
         private void InitializeViews()
         {
             foreach (View view in views)
@@ -95,7 +87,7 @@ namespace ViewManagement
                 {
                     if (view.Mode == ViewMode.Swap)
                     {
-                        lastView.Hide();
+                        HideView(lastView);
                     }
                     else
                     {
@@ -105,7 +97,7 @@ namespace ViewManagement
                     break;
                 }
 
-                activeViewsStack.Pop().Hide();
+                HideView(activeViewsStack.Pop());
             }
 
             activeViewsStack.Push(view);
@@ -123,7 +115,7 @@ namespace ViewManagement
 
                 if (activeViewsStack.Peek().Depth < lastView.Depth)
                 {
-                    lastView.Hide();
+                    HideView(lastView);
                     ShowView(activeViewsStack.Peek(), 2);
                     return;
                 }
@@ -144,14 +136,17 @@ namespace ViewManagement
             view.Show();
         }
 
-        [ContextMenu("Load")]
-        private void LoadViews()
+        private void HideView(View view)
+        {
+            view.Hide();
+        }
+
+        public void LoadViews()
         {
             views = FindObjectsOfType<View>(true);
         }
 
-        [ContextMenu("Clear")]
-        private void ClearViews()
+        public void ClearViews()
         {
             views = new View[0];
         }

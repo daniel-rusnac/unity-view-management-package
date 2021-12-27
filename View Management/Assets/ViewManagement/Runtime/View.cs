@@ -15,6 +15,7 @@ namespace ViewManagement
         private int animationsCompleted;
         private bool isShown;
         private bool isLocked;
+        private bool isShowAnimation;
         private ViewAnimation[] toggleAnimations;
         private ViewCallbacks[] viewListeners;
 
@@ -54,6 +55,7 @@ namespace ViewManagement
             if (isShown)
                 return;
 
+            isShowAnimation = true;
             isShown = true;
             animationsCompleted = 0;
             gameObject.SetActive(true);
@@ -92,6 +94,7 @@ namespace ViewManagement
 
             void OnShown()
             {
+                isShowAnimation = false;
                 Unlock();
 
                 foreach (ViewCallbacks initializer in viewListeners)
@@ -156,6 +159,12 @@ namespace ViewManagement
 
             void OnHidden()
             {
+                if (isShowAnimation)
+                {
+                    isShowAnimation = false;
+                    Unlock();
+                }
+                
                 onComplete?.Invoke();
                 gameObject.SetActive(false);
 
