@@ -1,6 +1,6 @@
 {
     "name": "ViewManagement",
-    "rootNamespace": "TryMyGames.ViewManagement",
+    "rootNamespace": "ViewManagement",
     "references": [
         "GUID:ac004da094302b9418f0f8e8693d9732"
     ],

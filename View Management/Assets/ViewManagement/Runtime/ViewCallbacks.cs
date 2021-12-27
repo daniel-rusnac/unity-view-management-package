@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TryMyGames.ViewManagement
+namespace ViewManagement
 {
     public abstract class ViewCallbacks : MonoBehaviour
     {

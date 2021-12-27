@@ -1,11 +1,11 @@
 {
   "name": "com.danielrusnac.viewmanagement",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "View Management",
   "author": 
   {
     "name": "Daniel Rusnac",
-    "email": "daniel.rusnac@trymygames.com"
+    "email": "daniel.rusnac.personal@gmail.com"
   },
   "dependencies": 
   {

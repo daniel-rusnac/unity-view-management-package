@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SOArchitecture.Channels;
 using UnityEngine;
 
-namespace TryMyGames.ViewManagement
+namespace ViewManagement
 {
     public class ViewManager : MonoBehaviour
     {

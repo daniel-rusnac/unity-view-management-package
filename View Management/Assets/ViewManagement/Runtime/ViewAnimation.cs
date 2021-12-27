@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TryMyGames.ViewManagement
+namespace ViewManagement
 {
     [RequireComponent(typeof(View))]
     public abstract class ViewAnimation : MonoBehaviour

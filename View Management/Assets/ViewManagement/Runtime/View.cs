@@ -3,7 +3,7 @@ using SOArchitecture.Channels;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace TryMyGames.ViewManagement
+namespace ViewManagement
 {
     public class View : MonoBehaviour
     {
