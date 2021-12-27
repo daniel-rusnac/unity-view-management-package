@@ -10,7 +10,7 @@
     {
       "displayName": "Dotween Animation Samples",
       "description": "Contains sample animations for view elements using DoTween.",
-      "path": "Samples/SampleAnimations"
+      "path": "Samples~/SampleAnimations"
     }
   ]
 }
