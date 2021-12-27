@@ -1,0 +1,16 @@
+{
+    "name": "ViewManagement",
+    "rootNamespace": "TryMyGames.ViewManagement",
+    "references": [
+        "GUID:ac004da094302b9418f0f8e8693d9732"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

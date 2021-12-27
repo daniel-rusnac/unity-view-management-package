@@ -1,0 +1,16 @@
+{
+  "name": "com.trymygames.viewmanagement",
+  "version": "1.0.0",
+  "displayName": "View Management",
+  "author": {
+    "name": "Daniel Rusnac",
+    "email": "daniel.rusnac@trymygames.com"
+  },
+  "samples": [
+    {
+      "displayName": "Animation Samples",
+      "description": "Contains sample animations for view elements.",
+      "path": "Samples/SampleAnimations"
+    }
+  ]
+}
