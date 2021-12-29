@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using TryMyGames.ViewManagement;
 using UnityEditor;
 using UnityEngine;
 
 namespace ViewManagement.Samples.SampleAnimations
 {
-    public class DotweenComponentsViewAnimation : ViewAnimation
+    public class ComponentsViewAnimationDotween : ViewAnimation
     {
         [SerializeField] private float maxShowDuration = 3f;
         [SerializeField] private float maxHideDuration = 1f;
@@ -29,7 +28,8 @@ namespace ViewManagement.Samples.SampleAnimations
                 tweens[i].DORestart();
             }
 
-            actionTween = DOVirtual.DelayedCall(Mathf.Min(maxShowDuration, maxTweenDuration), () => onComplete?.Invoke()).SetUpdate(true);
+            actionTween = DOVirtual
+                .DelayedCall(Mathf.Min(maxShowDuration, maxTweenDuration), () => onComplete?.Invoke()).SetUpdate(true);
         }
 
         protected override void OnHide(Action onComplete)
@@ -98,7 +98,7 @@ namespace ViewManagement.Samples.SampleAnimations
                     GetTweens();
                     return;
                 }
-                
+
                 if (tween.TryGetComponent(out RectTransform rectTransform))
                 {
                     Rect rect = rectTransform.rect;

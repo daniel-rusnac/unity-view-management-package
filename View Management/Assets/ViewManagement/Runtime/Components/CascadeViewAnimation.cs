@@ -20,14 +20,12 @@ namespace ViewManagement.Components
 
         private void OnDisable()
         {
-            foreach (Transform target in targets)
-            {
-                target.localScale = Vector3.one * HIDE_SCALE;
-            }
+            SetAllElementsScale(HIDE_SCALE);
         }
 
         protected override void OnShow(Action onComplete)
         {
+            SetAllElementsScale(HIDE_SCALE);
             scaleCoroutine = StartCoroutine(DoScale(HIDE_SCALE, SHOW_SCALE, showDuration, showEase, onComplete));
         }
         
@@ -47,6 +45,14 @@ namespace ViewManagement.Components
             if (scaleCoroutine != null)
             {
                 StopCoroutine(scaleCoroutine);
+            }
+        }
+
+        private void SetAllElementsScale(float scale)
+        {
+            foreach (Transform target in targets)
+            {
+                target.localScale = Vector3.one * scale;
             }
         }
 
