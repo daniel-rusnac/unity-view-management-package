@@ -6,9 +6,13 @@ All notable changes to this project will be documented in this file.
 ### Added
 - More view registration logs
 - Added a raycast blocker
+- Views now have all callbacks as unity events
 
 ### Fixed
-- Fixed cascade view animations
+- Fixed cascade view animations not stopping the coroutines when starting the animations before the last on finished
+
+### Removed
+- Removed the old OnExit unity event on the view~~~~
 
 ## [1.1.0] - 2021-12-29
 ### Added
