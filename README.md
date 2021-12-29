@@ -28,5 +28,5 @@ The view are shown and hidden when the corresponding channels send an event. The
 
 ### Animations and Callbacks
 
-- To add animations to you views, inherit from *ViewAnimation* or make use of the simple default animation component *CascadeViewAnimation*. You can also inport the animation samples that uses DoTween to animate the elements.
+- To add animations to you views, inherit from *ViewAnimation* or make use of the simple default animation component *CascadeViewAnimation*. You can also inport the animation samples that use DoTween to animate the elements.
 - If you want custom logic for your views, inherit from *ViewCallbacks*.
