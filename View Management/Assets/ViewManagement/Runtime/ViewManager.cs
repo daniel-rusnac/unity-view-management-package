@@ -50,16 +50,28 @@ namespace ViewManagement
         
         private void InitializeViews()
         {
+            HashSet<VoidChannelSO> registeredChannels = new HashSet<VoidChannelSO>();
+            registeredChannels.Add(backEventChannel);
+            
             foreach (View view in views)
             {
-                view.Initialize();
-                view.Hide(true);
+                if (registeredChannels.Contains(view.ShowEvent))
+                {
+                    Debug.LogWarning($"The channel [{view.ShowEvent.name}] is registered for more than one view!", view.ShowEvent);
+                }
+                else
+                {
+                    registeredChannels.Add(view.ShowEvent);
+                }
 
                 if (actionByView.ContainsKey(view))
                 {
-                    Debug.LogError($"View [{view.name}] is initialized for the secondTime!");
-                    return;
+                    Debug.LogWarning($"View [{view.name}] is initialized for the secondTime!", view);
+                    continue;
                 }
+                
+                view.Initialize();
+                view.Hide(true);
 
                 actionByView.Add(view, () => OnShow(view));
                 view.ShowEvent.Register(actionByView[view]);
