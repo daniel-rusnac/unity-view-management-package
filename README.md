@@ -4,7 +4,7 @@ A flexible system for managing UI view (screens).
 
 ## Installation
 
-This package depends on [Sriptable Object Architecture](https://github.com/danielrusnac/unity-so-architecture-package) that need to be mannualy installed first.
+This package depends on [Sriptable Object Architecture](https://github.com/danielrusnac/unity-so-architecture-package) that must to be mannualy installed first.
 
 When all dependencies are resolved:
 - Go to *Window/Package Manager*
