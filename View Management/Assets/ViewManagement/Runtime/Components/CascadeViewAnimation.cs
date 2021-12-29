@@ -5,16 +5,32 @@ using UnityEngine;
 
 namespace ViewManagement.Components
 {
+    [Serializable]
+    public struct CascadeStata
+    {
+        public float delay;
+        public float duration;
+        public AnimationCurve ease;
+    }
+
     public class CascadeViewAnimation : ViewAnimation
     {
         private const float SHOW_SCALE = 1f;
         private const float HIDE_SCALE = 0f;
-        
-        [SerializeField] private float showDuration = 0.2f;
-        [SerializeField] private float hideDuration;
+
         [SerializeField] private float interval = 0.05f;
-        [SerializeField] private AnimationCurve showEase = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-        [SerializeField] private AnimationCurve hideEase = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        [SerializeField] private CascadeStata show = new CascadeStata()
+        {
+            duration = 0.2f,
+            ease = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)
+        };
+
+        [SerializeField] private CascadeStata hide = new CascadeStata()
+        {
+            duration = 0f,
+            ease = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)
+        };
+
         [SerializeField] private Transform[] targets;
 
         private Coroutine scaleCoroutine;
@@ -27,20 +43,20 @@ namespace ViewManagement.Components
 
         protected override void OnShow(Action onComplete)
         {
-            scaleCoroutine = StartCoroutine(DoScale(HIDE_SCALE, SHOW_SCALE, showDuration, showEase, onComplete));
+            scaleCoroutine = StartCoroutine(DoScale(show.delay, SHOW_SCALE, show.duration, show.ease, onComplete));
         }
-        
+
         protected override void OnHide(Action onComplete)
         {
-            if (hideDuration == 0)
+            if (hide.duration == 0)
             {
                 onComplete?.Invoke();
                 return;
             }
-            
-            scaleCoroutine = StartCoroutine(DoScale(SHOW_SCALE, HIDE_SCALE, hideDuration, hideEase, onComplete));
+
+            scaleCoroutine = StartCoroutine(DoScale(hide.delay, HIDE_SCALE, hide.duration, hide.ease, onComplete));
         }
-        
+
         protected override void OnStop()
         {
             if (scaleCoroutine != null)
@@ -51,7 +67,7 @@ namespace ViewManagement.Components
                 {
                     StopCoroutine(elementScaleCoroutine);
                 }
-                
+
                 elementScaleCoroutines.Clear();
             }
         }
@@ -64,8 +80,10 @@ namespace ViewManagement.Components
             }
         }
 
-        private IEnumerator DoScale(float from, float to, float duration, AnimationCurve ease, Action onComplete)
+        private IEnumerator DoScale(float delay, float to, float duration, AnimationCurve ease, Action onComplete)
         {
+            yield return new WaitForSeconds(delay);
+            
             WaitForSeconds intervalWait = new WaitForSeconds(interval);
             Coroutine lastCoroutine = null;
 
