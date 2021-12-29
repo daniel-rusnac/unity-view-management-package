@@ -146,22 +146,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4233705375747794202, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -221,6 +205,10 @@ PrefabInstance:
     - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: hideDuration
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: showDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679098, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Name
@@ -668,22 +656,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4233705375747794203, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -739,6 +711,10 @@ PrefabInstance:
     - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: hideDuration
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: showDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679098, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Name
@@ -939,22 +915,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233705375747794200, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4233705375747794203, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1006,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: hideDuration
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: showDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679098, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Name

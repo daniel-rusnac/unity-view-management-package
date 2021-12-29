@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ViewManagement.Components
@@ -17,11 +18,7 @@ namespace ViewManagement.Components
         [SerializeField] private Transform[] targets;
 
         private Coroutine scaleCoroutine;
-
-        private void OnDisable()
-        {
-            SetAllElementsScale(HIDE_SCALE);
-        }
+        private List<Coroutine> elementScaleCoroutines = new List<Coroutine>();
 
         protected override void OnShow(Action onComplete)
         {
@@ -37,14 +34,22 @@ namespace ViewManagement.Components
                 return;
             }
 
+            SetAllElementsScale(SHOW_SCALE);
             scaleCoroutine = StartCoroutine(DoScale(SHOW_SCALE, HIDE_SCALE, hideDuration, hideEase, onComplete));
         }
-
+        
         protected override void OnStop()
         {
             if (scaleCoroutine != null)
             {
                 StopCoroutine(scaleCoroutine);
+
+                foreach (Coroutine elementScaleCoroutine in elementScaleCoroutines)
+                {
+                    StopCoroutine(elementScaleCoroutine);
+                }
+                
+                elementScaleCoroutines.Clear();
             }
         }
 
@@ -64,6 +69,7 @@ namespace ViewManagement.Components
             foreach (Transform child in targets)
             {
                 lastCoroutine = StartCoroutine(DoScale(from, to, duration, ease, child));
+                elementScaleCoroutines.Add(lastCoroutine);
 
                 yield return intervalWait;
             }
