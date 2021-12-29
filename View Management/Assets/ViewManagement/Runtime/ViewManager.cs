@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SOArchitecture.Channels;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ViewManagement
 {
@@ -13,9 +14,11 @@ namespace ViewManagement
 
         public readonly Stack<View> activeViewsStack = new Stack<View>();
         private readonly Dictionary<View, Action> actionByView = new Dictionary<View, Action>();
+        private RectTransform raycastBlockerRect;
 
-        private void Awake()
+        private void Start()
         {
+            InitializeRaycastBlocker();
             InitializeViews();
         }
 
@@ -47,17 +50,32 @@ namespace ViewManagement
                 }
             }
         }
-        
+
+        private void InitializeRaycastBlocker()
+        {
+            if (views.Length == 0)
+                return;
+
+            GameObject raycastBlocker = new GameObject($"{name} Raycast Blocker");
+            Image image = raycastBlocker.AddComponent<Image>();
+            image.color = Color.clear;
+
+            raycastBlockerRect = raycastBlocker.GetComponent<RectTransform>();
+            
+            SetRaycastBlockerSibling(0, views[0].transform.parent);
+        }
+
         private void InitializeViews()
         {
             HashSet<VoidChannelSO> registeredChannels = new HashSet<VoidChannelSO>();
             registeredChannels.Add(backEventChannel);
-            
+
             foreach (View view in views)
             {
                 if (registeredChannels.Contains(view.ShowEvent))
                 {
-                    Debug.LogWarning($"The channel [{view.ShowEvent.name}] is registered for more than one view!", view.ShowEvent);
+                    Debug.LogWarning($"The channel [{view.ShowEvent.name}] is registered for more than one view!",
+                        view.ShowEvent);
                 }
                 else
                 {
@@ -69,7 +87,7 @@ namespace ViewManagement
                     Debug.LogWarning($"View [{view.name}] is initialized for the secondTime!", view);
                     continue;
                 }
-                
+
                 view.Initialize();
                 view.Hide(true);
 
@@ -140,12 +158,27 @@ namespace ViewManagement
 
         private void ShowView(View view, int siblingOffset = 1)
         {
-            if (!view.IsShown)
-            {
-                view.transform.SetSiblingIndex(view.transform.parent.childCount - siblingOffset);
-            }
+            if (view.IsShown)
+                return;
 
-            view.Show();
+            int viewSiblingIndex = view.transform.parent.childCount - siblingOffset;
+            
+            view.transform.SetSiblingIndex(viewSiblingIndex);
+           
+            SetRaycastBlockerSibling(viewSiblingIndex + 1, view.transform.parent);
+            view.Show(false, () => SetRaycastBlockerSibling(viewSiblingIndex - 1, view.transform.parent));
+        }
+
+        private void SetRaycastBlockerSibling(int siblingIndex, Transform parent)
+        {
+            raycastBlockerRect.SetParent(parent);
+            raycastBlockerRect.localScale = Vector3.one;
+            raycastBlockerRect.SetSiblingIndex(siblingIndex);
+            
+            raycastBlockerRect.anchorMin = Vector2.zero;
+            raycastBlockerRect.anchorMax = Vector2.one;
+            raycastBlockerRect.offsetMax = Vector2.zero;
+            raycastBlockerRect.offsetMin = Vector2.zero;
         }
 
         private void HideView(View view)
