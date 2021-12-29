@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - More view registration logs
+- Added a raycast blocker
 
 ### Fixed
 - Fixed cascade view animations
