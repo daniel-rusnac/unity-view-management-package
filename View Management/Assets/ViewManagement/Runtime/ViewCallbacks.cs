@@ -23,5 +23,9 @@ namespace ViewManagement
         public virtual void OnHidden()
         {
         }
+        
+        public virtual void OnExit()
+        {
+        }
     }
 }

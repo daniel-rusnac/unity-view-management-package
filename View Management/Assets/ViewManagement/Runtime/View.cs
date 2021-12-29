@@ -1,7 +1,7 @@
 ﻿using System;
 using SOArchitecture.Channels;
 using UnityEngine;
-using UnityEngine.Events;
+using ViewManagement.Components;
 
 namespace ViewManagement
 {
@@ -10,14 +10,14 @@ namespace ViewManagement
         [SerializeField] private int depth;
         [SerializeField] private VoidChannelSO showEvent;
         [SerializeField] private ViewMode mode;
-        [SerializeField] private UnityEvent onExit;
+        [HideInInspector] public ViewCallbacksController viewCallbacksController = new ViewCallbacksController();
 
+        private int lockCount;
         private int animationsCompleted;
         private bool isShown;
         private bool isLocked;
         private bool isShowAnimation;
         private ViewAnimation[] toggleAnimations;
-        private ViewCallbacks[] viewListeners;
 
         public event Action onShown;
         public event Action onHidden;
@@ -30,13 +30,9 @@ namespace ViewManagement
         public void Initialize()
         {
             isShown = gameObject.activeSelf;
-            viewListeners = GetComponents<ViewCallbacks>();
             toggleAnimations = GetComponents<ViewAnimation>();
-
-            foreach (ViewCallbacks initializer in viewListeners)
-            {
-                initializer.OnInitialize();
-            }
+            viewCallbacksController.callbacks = GetComponents<ViewCallbacks>();
+            viewCallbacksController.OnInitialize();
         }
 
         [ContextMenu("Show")]
@@ -61,10 +57,7 @@ namespace ViewManagement
             gameObject.SetActive(true);
             Lock();
 
-            foreach (ViewCallbacks initializer in viewListeners)
-            {
-                initializer.OnShow();
-            }
+            viewCallbacksController.OnShow();
 
             if (immediate)
             {
@@ -97,10 +90,7 @@ namespace ViewManagement
                 isShowAnimation = false;
                 Unlock();
 
-                foreach (ViewCallbacks initializer in viewListeners)
-                {
-                    initializer.OnShown();
-                }
+                viewCallbacksController.OnShown();
 
                 onShown?.Invoke();
                 onComplete?.Invoke();
@@ -126,10 +116,7 @@ namespace ViewManagement
             isShown = false;
             animationsCompleted = 0;
 
-            foreach (ViewCallbacks initializer in viewListeners)
-            {
-                initializer.OnHide();
-            }
+            viewCallbacksController.OnHide();
 
             if (immediate)
             {
@@ -164,14 +151,11 @@ namespace ViewManagement
                     isShowAnimation = false;
                     Unlock();
                 }
-                
+
                 onComplete?.Invoke();
                 gameObject.SetActive(false);
 
-                foreach (ViewCallbacks initializer in viewListeners)
-                {
-                    initializer.OnHidden();
-                }
+                viewCallbacksController.OnHidden();
 
                 animationsCompleted = 0;
                 onHidden?.Invoke();
@@ -180,7 +164,7 @@ namespace ViewManagement
 
         public void Exit()
         {
-            onExit?.Invoke();
+            viewCallbacksController.OnExit();
         }
 
         public void Lock()
@@ -201,7 +185,5 @@ namespace ViewManagement
 
             isLocked = lockCount > 0;
         }
-
-        private int lockCount;
     }
 }
