@@ -10,9 +10,9 @@ namespace ViewManagement.Components
         private const float SHOW_SCALE = 1f;
         private const float HIDE_SCALE = 0f;
         
-        [SerializeField] private float showDuration = 0.3f;
-        [SerializeField] private float hideDuration = 0.1f;
-        [SerializeField] private float interval = 0.1f;
+        [SerializeField] private float showDuration = 0.2f;
+        [SerializeField] private float hideDuration;
+        [SerializeField] private float interval = 0.05f;
         [SerializeField] private AnimationCurve showEase = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         [SerializeField] private AnimationCurve hideEase = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         [SerializeField] private Transform[] targets;
@@ -20,9 +20,13 @@ namespace ViewManagement.Components
         private Coroutine scaleCoroutine;
         private List<Coroutine> elementScaleCoroutines = new List<Coroutine>();
 
-        protected override void OnShow(Action onComplete)
+        private void OnDisable()
         {
             SetAllElementsScale(HIDE_SCALE);
+        }
+
+        protected override void OnShow(Action onComplete)
+        {
             scaleCoroutine = StartCoroutine(DoScale(HIDE_SCALE, SHOW_SCALE, showDuration, showEase, onComplete));
         }
         
@@ -33,8 +37,7 @@ namespace ViewManagement.Components
                 onComplete?.Invoke();
                 return;
             }
-
-            SetAllElementsScale(SHOW_SCALE);
+            
             scaleCoroutine = StartCoroutine(DoScale(SHOW_SCALE, HIDE_SCALE, hideDuration, hideEase, onComplete));
         }
         
@@ -68,7 +71,7 @@ namespace ViewManagement.Components
 
             foreach (Transform child in targets)
             {
-                lastCoroutine = StartCoroutine(DoScale(from, to, duration, ease, child));
+                lastCoroutine = StartCoroutine(DoScale(child.transform.localScale.x, to, duration, ease, child));
                 elementScaleCoroutines.Add(lastCoroutine);
 
                 yield return intervalWait;
@@ -91,7 +94,7 @@ namespace ViewManagement.Components
                 time += Time.deltaTime;
                 float t = time / duration;
 
-                target.localScale = Vector3.one * Mathf.Lerp(from, to, ease.Evaluate(t));
+                target.localScale = Vector3.one * Mathf.LerpUnclamped(from, to, ease.Evaluate(t));
 
                 yield return null;
             }

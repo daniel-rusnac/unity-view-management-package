@@ -202,14 +202,6 @@ PrefabInstance:
       propertyPath: showEvent
       value: 
       objectReference: {fileID: 11400000, guid: 6acc6d963e95d164da1dccf7ab91f8c9, type: 2}
-    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: hideDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: showDuration
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679098, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Name
       value: Game Over
@@ -708,14 +700,6 @@ PrefabInstance:
       propertyPath: showEvent
       value: 
       objectReference: {fileID: 11400000, guid: 75869e47ebf478849aade48799155d60, type: 2}
-    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: hideDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: showDuration
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679098, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Name
       value: Gameplay
@@ -963,14 +947,6 @@ PrefabInstance:
       propertyPath: showEvent
       value: 
       objectReference: {fileID: 11400000, guid: 9d6a3d340b9b6c9438da04e3a5ef2098, type: 2}
-    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: hideDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6098226254771679097, guid: 960422985c5480f4f92223039c805e8f, type: 3}
-      propertyPath: showDuration
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679098, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: m_Name
       value: Menu
