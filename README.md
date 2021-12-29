@@ -19,10 +19,10 @@ To get a specific verion of the package, go to releases and copy the "Package Li
 
 ## Usage
 
-There are 2 main components to this system:
+There are 3 main components to this system:
   - View
   - View Manager
-  - UI Channel (void channel from SOArchitecure)
+  - Channel (void channel from SOArchitecure)
 
 The view are shown and hidden when the corresponding channels send an event. The *ViewManager* itslef has a *Back Channel*, which will go back in the view stack as long as the *Depth* of the previous *View* is lower that the current one.
 
