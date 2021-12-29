@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.danielrusnac.soarchitecture": {
-      "version": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=/SO Architecture/Assets/SOArchitecture",
+      "version": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.2.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "7a43ffe833c62eda2afc5dbd1c2ad968ccf30d5e"
+      "hash": "f41ec9d7185694c092e337448bc93c5476f2c6fc"
     },
     "com.unity.collab-proxy": {
       "version": "1.13.5",
