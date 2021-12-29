@@ -1,6 +1,6 @@
 # View Management
 
-A flexible system for amanging UI view (screens).
+A flexible system for managing UI view (screens).
 
 ## Installation
 
