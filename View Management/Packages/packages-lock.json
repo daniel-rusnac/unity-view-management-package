@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.danielrusnac.soarchitecture": {
-      "version": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.2.0",
+      "version": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.2.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
