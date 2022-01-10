@@ -1,18 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.1.0] - 2022-01-10
 
 ### Added
 - More view registration logs
 - Added a raycast blocker
 - Views now have all callbacks as unity events
 
+### Changed
+- Updated dependency versions
+
 ### Fixed
 - Fixed cascade view animations not stopping the coroutines when starting the animations before the last on finished
 
 ### Removed
-- Removed the old OnExit unity event on the view~~~~
+- Removed the old OnExit unity event on the view
 
 ## [1.1.0] - 2021-12-29
 ### Added
@@ -27,6 +30,7 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]: https://github.com/danielrusnac/unity-view-management-package
 [1.1.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.0
+[1.1.1]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.1
 
 ---
 
