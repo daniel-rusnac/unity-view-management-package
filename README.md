@@ -10,10 +10,6 @@ When all dependencies are resolved:
 - Go to *Window/Package Manager*
 - Click on *+ Add package from git URL...*
 - Paste link for the wanted version.
-Package Link for latest version, [v1.1.0](https://github.com/danielrusnac/unity-view-management-package/releases/tag/1.1.0)
-```
-https://github.com/danielrusnac/unity-view-management-package.git?path=/View Management/Assets/ViewManagement#v1.1.0
-```
 
 To get a specific verion of the package, go to releases and copy the "Package Link".
 
