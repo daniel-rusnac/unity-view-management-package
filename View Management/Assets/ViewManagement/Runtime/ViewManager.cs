@@ -138,6 +138,12 @@ namespace ViewManagement
                 return;
             }
 
+            View lastView = activeViewsStack[activeViewsStack.Count - 1];
+            activeViewsStack.Remove(lastView);
+            OnHide(lastView);
+            
+            ShowView(activeViewsStack[activeViewsStack.Count - 1]);
+
             for (int i = activeViewsStack.Count - 1; i > 0; i--)
             {
                 if (activeViewsStack[i].Mode == ViewMode.Overlay)
