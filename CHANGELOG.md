@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.2.0] - 2022-01-12
 
 ### Changed
 - The raycast blocker is now active only if at least one active view has this setting
@@ -40,6 +40,7 @@ All notable changes to this project will be documented in this file.
 [Unreleased]: https://github.com/danielrusnac/unity-view-management-package
 [1.1.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.0
 [1.1.1]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.1
+[1.2.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.2.0
 
 ---
 
