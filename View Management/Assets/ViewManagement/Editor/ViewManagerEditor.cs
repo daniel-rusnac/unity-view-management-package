@@ -68,7 +68,14 @@ namespace ViewManagement
 
             foreach (View view in viewManager.activeViewsStack)
             {
-                string color = view.IsLocked ? "red" : view.IsShown ? "green" : "grey";
+                string color = (view.State == ViewState.IsShowing || view.State == ViewState.IsHiding)
+                        ? "yellow" 
+                        : view.IsLocked 
+                        ? "red"
+                        : view.State == ViewState.IsShown 
+                            ? "green" 
+                            : "grey";
+                
                 s += $" <color={color}>{view.name}</color> <";
             }
 

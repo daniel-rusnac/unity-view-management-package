@@ -33,7 +33,14 @@ namespace ViewManagement
                 DrawButtons();
             }
             
-            DrawCallbacks(view.viewCallbacksController);
+            EditorGUI.BeginChangeCheck();
+            {
+                DrawCallbacks(view.viewCallbacksController);
+            }
+            if (EditorGUI.EndChangeCheck())
+            {
+                EditorUtility.SetDirty(target);
+            }
         }
 
         private void DrawButtons()
@@ -56,7 +63,7 @@ namespace ViewManagement
         private void DrawCallbacks(ViewCallbacksController callbacksController)
         {
             serializedObject.UpdateIfRequiredOrScript();
-
+            
             EditorGUILayout.BeginHorizontal();
             {
                 callbacksController.drawInitialize = GUILayout.Toggle(callbacksController.drawInitialize, new GUIContent("OnInitialize", "Event only once, when the ViewManagers is initialized."), buttonStyle);

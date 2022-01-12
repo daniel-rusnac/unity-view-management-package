@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SOArchitecture.Channels;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,7 +62,7 @@ namespace ViewManagement
             image.color = Color.clear;
 
             raycastBlockerRect = raycastBlocker.GetComponent<RectTransform>();
-            
+
             SetRaycastBlockerSibling(0, views[0].transform.parent);
         }
 
@@ -158,15 +159,35 @@ namespace ViewManagement
 
         private void ShowView(View view, int siblingOffset = 1)
         {
-            if (view.IsShown)
+            if (view.State == ViewState.IsShown || view.State == ViewState.IsShowing)
                 return;
-
-            int viewSiblingIndex = view.transform.parent.childCount - siblingOffset;
             
+            int viewSiblingIndex = view.transform.parent.childCount - siblingOffset;
+
             view.transform.SetSiblingIndex(viewSiblingIndex);
-           
+
             SetRaycastBlockerSibling(viewSiblingIndex + 1, view.transform.parent);
-            view.Show(false, () => SetRaycastBlockerSibling(viewSiblingIndex - 1, view.transform.parent));
+
+            view.Show(false, () =>
+            {
+                SetRaycastBlockerSibling(viewSiblingIndex - 1, view.transform.parent);
+                RefreshRaycastBlocker();
+            });
+            
+            RefreshRaycastBlocker();
+        }
+
+        private void HideView(View view)
+        {
+            view.Hide(false, () => { RefreshRaycastBlocker(); });
+        }
+
+        private void RefreshRaycastBlocker()
+        {
+            bool activeBlocker = activeViewsStack.Any(v =>
+                (v.State == ViewState.IsShown || v.State == ViewState.IsShowing || v.State == ViewState.IsHiding) &&
+                (v.Settings & ViewSetting.BlockRaycasts) != 0);
+            raycastBlockerRect.gameObject.SetActive(activeBlocker);
         }
 
         private void SetRaycastBlockerSibling(int siblingIndex, Transform parent)
@@ -174,16 +195,11 @@ namespace ViewManagement
             raycastBlockerRect.SetParent(parent);
             raycastBlockerRect.localScale = Vector3.one;
             raycastBlockerRect.SetSiblingIndex(siblingIndex);
-            
+
             raycastBlockerRect.anchorMin = Vector2.zero;
             raycastBlockerRect.anchorMax = Vector2.one;
             raycastBlockerRect.offsetMax = Vector2.zero;
             raycastBlockerRect.offsetMin = Vector2.zero;
-        }
-
-        private void HideView(View view)
-        {
-            view.Hide();
         }
 
         public void LoadViews()
