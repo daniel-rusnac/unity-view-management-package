@@ -1,7 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.0] - 2022-01-10
+## [Unreleased]
+
+### Changed
+- The raycast blocker is now active only if at least one active view has this setting
+- Now only one view per object is allowed
+
+### Fixed
+- Fixed views not being set dirty when a callback was toggled
+
+## [1.1.1] - 2022-01-10
 
 ### Added
 - More view registration logs
