@@ -34,7 +34,7 @@ namespace ViewManagement
         {
             toggleAnimations = GetComponents<ViewAnimation>();
             viewCallbacksController.callbacks = GetComponents<ViewCallbacks>();
-            
+
             SetState(gameObject.activeSelf ? ViewState.IsShown : ViewState.IsHidden);
             viewCallbacksController.OnInitialize();
         }
@@ -58,7 +58,6 @@ namespace ViewManagement
             SetState(ViewState.IsShowing);
             animationsCompleted = 0;
             gameObject.SetActive(true);
-            Lock();
 
             viewCallbacksController.OnShow();
 
@@ -169,12 +168,6 @@ namespace ViewManagement
         public void Exit()
         {
             viewCallbacksController.OnExit();
-        }
-
-        public void Lock()
-        {
-            lockCount++;
-            isLocked = lockCount > 0;
         }
 
         public void Unlock()
