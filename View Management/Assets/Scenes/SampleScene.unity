@@ -743,6 +743,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: depth
       value: 1
       objectReference: {fileID: 0}

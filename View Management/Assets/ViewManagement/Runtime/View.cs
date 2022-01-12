@@ -9,7 +9,7 @@ namespace ViewManagement
     public class View : MonoBehaviour
     {
         private const ViewSetting DEFAULT_SETTINGS = (ViewSetting) (-1);
-        
+
         [SerializeField] private int depth;
         [SerializeField] private VoidChannelSO showEvent;
         [SerializeField] private ViewSetting settings = DEFAULT_SETTINGS;
@@ -22,23 +22,25 @@ namespace ViewManagement
         private ViewAnimation[] toggleAnimations;
 
         internal ViewSetting Settings => settings;
-        
+
         public event Action onShown;
         public event Action onHidden;
         public int Depth => depth;
         public VoidChannelSO ShowEvent => showEvent;
         public ViewMode Mode => mode;
         public ViewState State { get; private set; }
-        
+
         [Obsolete("Use [State.IsShown] instead.")]
         public bool IsShown => State == ViewState.IsShown;
+
         public bool IsLocked => isLocked;
 
         public void Initialize()
         {
-            State = gameObject.activeSelf ? ViewState.IsShown : ViewState.IsHidden;
             toggleAnimations = GetComponents<ViewAnimation>();
             viewCallbacksController.callbacks = GetComponents<ViewCallbacks>();
+            
+            SetState(gameObject.activeSelf ? ViewState.IsShown : ViewState.IsHidden);
             viewCallbacksController.OnInitialize();
         }
 
@@ -58,7 +60,7 @@ namespace ViewManagement
             if (State == ViewState.IsShown || State == ViewState.IsShowing)
                 return;
 
-            State = ViewState.IsShowing;
+            SetState(ViewState.IsShowing);
             animationsCompleted = 0;
             gameObject.SetActive(true);
             Lock();
@@ -93,7 +95,7 @@ namespace ViewManagement
 
             void OnShown()
             {
-                State = ViewState.IsShown;
+                SetState(ViewState.IsShown);
                 Unlock();
 
                 viewCallbacksController.OnShown();
@@ -119,7 +121,7 @@ namespace ViewManagement
             if (State == ViewState.IsHidden || State == ViewState.IsHiding)
                 return;
 
-            State = ViewState.IsHiding;
+            SetState(ViewState.IsHiding);
             animationsCompleted = 0;
 
             viewCallbacksController.OnHide();
@@ -157,7 +159,7 @@ namespace ViewManagement
                     Unlock();
                 }
 
-                State = ViewState.IsHidden;
+                SetState(ViewState.IsHidden);
 
                 onComplete?.Invoke();
                 gameObject.SetActive(false);
@@ -191,6 +193,14 @@ namespace ViewManagement
             }
 
             isLocked = lockCount > 0;
+        }
+
+        private void SetState(ViewState state)
+        {
+            if (State == state)
+                return;
+
+            State = state;
         }
     }
 }
