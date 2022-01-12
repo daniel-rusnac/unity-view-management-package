@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace ViewManagement
 {
+    [AddComponentMenu(ViewUtilities.ADD_MENU + nameof(ViewManager))]
     public class ViewManager : MonoBehaviour
     {
         [SerializeField] private VoidChannelSO backEventChannel;

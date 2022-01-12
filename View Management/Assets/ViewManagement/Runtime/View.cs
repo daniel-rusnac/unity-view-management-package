@@ -5,6 +5,7 @@ using ViewManagement.Components;
 
 namespace ViewManagement
 {
+    [AddComponentMenu(ViewUtilities.ADD_MENU + nameof(View))]
     [DisallowMultipleComponent]
     public class View : MonoBehaviour
     {

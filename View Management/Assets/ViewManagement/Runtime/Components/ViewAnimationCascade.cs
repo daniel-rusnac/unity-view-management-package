@@ -13,7 +13,8 @@ namespace ViewManagement.Components
         public AnimationCurve ease;
     }
 
-    public class CascadeViewAnimation : ViewAnimation
+    [AddComponentMenu(ViewUtilities.COMPONENTS_SUB_MENU + nameof(ViewAnimationCascade))]
+    public class ViewAnimationCascade : ViewAnimation
     {
         private const float SHOW_SCALE = 1f;
         private const float HIDE_SCALE = 0f;

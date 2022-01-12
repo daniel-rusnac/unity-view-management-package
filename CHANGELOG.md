@@ -1,6 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- Components add menu
+
+### Changed
+
+- Raycast blocker is now a ViewComponent
+
+### Fixed
+
+- Views not being shown/hidden properly in a specific scenario
+
 ## [1.2.0] - 2022-01-12
 
 ### Changed
@@ -41,6 +55,7 @@ All notable changes to this project will be documented in this file.
 [1.1.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.0
 [1.1.1]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.1
 [1.2.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.2.0
+[1.2.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v2.0.0
 
 ---
 

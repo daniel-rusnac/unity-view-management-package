@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 namespace ViewManagement.Components
 {
-    public class RaycastBlocker : ViewCallbacks
+    [AddComponentMenu(ViewUtilities.COMPONENTS_SUB_MENU + nameof(ViewBlocker))]
+    public class ViewBlocker : ViewCallbacks
     {
         private RectTransform raycastBlockerRect;
         private Image raycastBlockerImage;
