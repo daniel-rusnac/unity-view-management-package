@@ -12,10 +12,8 @@ namespace ViewManagement
         [SerializeField] private VoidChannelSO showEvent;
         [SerializeField] private ViewMode mode;
         [HideInInspector] public ViewCallbacksController viewCallbacksController = new ViewCallbacksController();
-
-        private int lockCount;
+        
         private int animationsCompleted;
-        private bool isLocked;
         private ViewAnimation[] toggleAnimations;
 
         public event Action onShown;
@@ -27,8 +25,6 @@ namespace ViewManagement
 
         [Obsolete("Use [State.IsShown] instead.")]
         public bool IsShown => State == ViewState.IsShown;
-
-        public bool IsLocked => isLocked;
 
         public void Initialize()
         {
@@ -90,7 +86,6 @@ namespace ViewManagement
             void OnShown()
             {
                 SetState(ViewState.IsShown);
-                Unlock();
 
                 viewCallbacksController.OnShown();
 
@@ -148,11 +143,6 @@ namespace ViewManagement
 
             void OnHidden()
             {
-                if (State == ViewState.IsShowing)
-                {
-                    Unlock();
-                }
-
                 SetState(ViewState.IsHidden);
 
                 onComplete?.Invoke();
@@ -168,19 +158,6 @@ namespace ViewManagement
         public void Exit()
         {
             viewCallbacksController.OnExit();
-        }
-
-        public void Unlock()
-        {
-            lockCount--;
-
-            if (lockCount < 0)
-            {
-                lockCount = 0;
-                Debug.LogWarning($"Lock count is {lockCount} for {name}! Resetting back to zero.", this);
-            }
-
-            isLocked = lockCount > 0;
         }
 
         private void SetState(ViewState state)

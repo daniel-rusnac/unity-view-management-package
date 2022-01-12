@@ -11,7 +11,7 @@ namespace ViewManagement
         [SerializeField] private View startView;
         [SerializeField] private View[] views;
 
-        public readonly Stack<View> activeViewsStack = new Stack<View>();
+        public readonly List<View> activeViewsStack = new List<View>();
 
         private readonly Dictionary<View, Action> actionByView = new Dictionary<View, Action>();
 
@@ -89,7 +89,7 @@ namespace ViewManagement
         {
             while (activeViewsStack.Count > 0)
             {
-                View lastView = activeViewsStack.Peek();
+                View lastView = activeViewsStack[activeViewsStack.Count - 1];
 
                 if (lastView == view)
                 {
@@ -110,11 +110,12 @@ namespace ViewManagement
 
                     break;
                 }
-
-                HideView(activeViewsStack.Pop());
+                
+                HideView(lastView);
+                activeViewsStack.RemoveAt(activeViewsStack.Count - 1);
             }
 
-            activeViewsStack.Push(view);
+            activeViewsStack.Add(view);
             ShowView(view);
         }
 
@@ -122,22 +123,19 @@ namespace ViewManagement
         {
             if (activeViewsStack.Count > 1)
             {
-                if (activeViewsStack.Peek().IsLocked)
-                    return;
+                View lastView = activeViewsStack[activeViewsStack.Count - 1];
 
-                View lastView = activeViewsStack.Pop();
-
-                if (activeViewsStack.Peek().Depth < lastView.Depth)
+                if (activeViewsStack[activeViewsStack.Count - 1].Depth < lastView.Depth)
                 {
                     HideView(lastView);
-                    ShowView(activeViewsStack.Peek(), 2);
+                    ShowView(activeViewsStack[activeViewsStack.Count - 1], 2);
                     return;
                 }
 
-                activeViewsStack.Push(lastView);
+                activeViewsStack.Add(lastView);
             }
 
-            activeViewsStack.Peek().Exit();
+            activeViewsStack[activeViewsStack.Count - 1].Exit();
         }
 
         private void ShowView(View view, int siblingOffset = 1)
