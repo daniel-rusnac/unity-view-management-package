@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using SOArchitecture.Channels;
 using UnityEngine;
-using UnityEngine.UI;
-using ViewManagement.Components;
 
 namespace ViewManagement
 {
@@ -15,14 +12,11 @@ namespace ViewManagement
         [SerializeField] private View[] views;
 
         public readonly Stack<View> activeViewsStack = new Stack<View>();
-        
+
         private readonly Dictionary<View, Action> actionByView = new Dictionary<View, Action>();
-        // private RectTransform raycastBlockerRect;
-        private RaycastBlocker raycastBlocker; 
 
         private void Start()
         {
-            InitializeRaycastBlocker();
             InitializeViews();
         }
 
@@ -53,22 +47,6 @@ namespace ViewManagement
                     views[i].ShowEvent.Unregister((actionByView[views[i]]));
                 }
             }
-        }
-
-        private void InitializeRaycastBlocker()
-        {
-            if (views.Length == 0)
-                return;
-
-            raycastBlocker = new RaycastBlocker(views[0].transform.parent);
-
-            // GameObject raycastBlocker = new GameObject($"{name} Raycast Blocker");
-            // Image image = raycastBlocker.AddComponent<Image>();
-            // image.color = Color.clear;
-            //
-            // raycastBlockerRect = raycastBlocker.GetComponent<RectTransform>();
-            //
-            // SetRaycastBlockerSibling(0, views[0].transform.parent);
         }
 
         private void InitializeViews()
@@ -165,49 +143,14 @@ namespace ViewManagement
         private void ShowView(View view, int siblingOffset = 1)
         {
             int viewSiblingIndex = view.transform.parent.childCount - siblingOffset;
-
             view.transform.SetSiblingIndex(viewSiblingIndex);
-            raycastBlocker.PlaceInFront(view.transform);
-            UpdateRaycastBlocker();
-
-            // SetRaycastBlockerSibling(viewSiblingIndex, view.transform.parent);
-
-            view.Show(false, () =>
-            {
-                // SetRaycastBlockerSibling(viewSiblingIndex - 1, view.transform.parent);
-                // RefreshRaycastBlocker();
-
-                UpdateRaycastBlocker();
-            });
-            
-            // RefreshRaycastBlocker();
+            view.Show();
         }
 
         private void HideView(View view)
         {
-            view.Hide(false, () => { UpdateRaycastBlocker(); });
+            view.Hide();
         }
-
-        // private void RefreshRaycastBlocker()
-        // {
-        //     bool activeBlocker = activeViewsStack.Any(v =>
-        //         (v.State == ViewState.IsShown || v.State == ViewState.IsShowing || v.State == ViewState.IsHiding) &&
-        //         (v.Settings & ViewSetting.BlockRaycasts) != 0);
-        //     raycastBlockerRect.gameObject.SetActive(activeBlocker);
-        // }
-
-        // private void SetRaycastBlockerSibling(int siblingIndex, Transform parent)
-        // {
-        //     Debug.Log(siblingIndex);
-        //     raycastBlockerRect.SetParent(parent);
-        //     raycastBlockerRect.localScale = Vector3.one;
-        //     raycastBlockerRect.SetSiblingIndex(siblingIndex);
-        //
-        //     raycastBlockerRect.anchorMin = Vector2.zero;
-        //     raycastBlockerRect.anchorMax = Vector2.one;
-        //     raycastBlockerRect.offsetMax = Vector2.zero;
-        //     raycastBlockerRect.offsetMin = Vector2.zero;
-        // }
 
         public void LoadViews()
         {
@@ -217,18 +160,6 @@ namespace ViewManagement
         public void ClearViews()
         {
             views = new View[0];
-        }
-
-        private void UpdateRaycastBlocker()
-        {
-            View lastView = activeViewsStack.Peek();
-            int i = 0;
-            
-            foreach (View view in activeViewsStack)
-            {
-                Debug.Log(i + " " + view.name);
-                i++;
-            }
         }
     }
 }

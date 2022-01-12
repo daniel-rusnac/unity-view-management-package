@@ -8,11 +8,8 @@ namespace ViewManagement
     [DisallowMultipleComponent]
     public class View : MonoBehaviour
     {
-        private const ViewSetting DEFAULT_SETTINGS = (ViewSetting) (-1);
-
         [SerializeField] private int depth;
         [SerializeField] private VoidChannelSO showEvent;
-        [SerializeField] private ViewSetting settings = DEFAULT_SETTINGS;
         [SerializeField] private ViewMode mode;
         [HideInInspector] public ViewCallbacksController viewCallbacksController = new ViewCallbacksController();
 
@@ -20,8 +17,6 @@ namespace ViewManagement
         private int animationsCompleted;
         private bool isLocked;
         private ViewAnimation[] toggleAnimations;
-
-        internal ViewSetting Settings => settings;
 
         public event Action onShown;
         public event Action onHidden;
