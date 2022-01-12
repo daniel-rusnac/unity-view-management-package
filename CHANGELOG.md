@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.0.0]
 
 ### Added
 
@@ -55,7 +55,7 @@ All notable changes to this project will be documented in this file.
 [1.1.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.0
 [1.1.1]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.1.1
 [1.2.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v1.2.0
-[1.2.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v2.0.0
+[2.0.0]: https://github.com/danielrusnac/unity-view-management-package/releases/tag/v2.0.0
 
 ---
 
