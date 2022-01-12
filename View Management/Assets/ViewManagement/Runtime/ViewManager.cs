@@ -75,17 +75,17 @@ namespace ViewManagement
                 view.Initialize();
                 view.Hide(true);
 
-                actionByView.Add(view, () => OnShow(view));
+                actionByView.Add(view, () => ShowView(view));
                 view.ShowEvent.Register(actionByView[view]);
             }
 
             if (startView != null)
             {
-                OnShow(startView);
+                ShowView(startView);
             }
         }
 
-        private void OnShow(View view)
+        private void ShowView(View view)
         {
             while (activeViewsStack.Count > 0)
             {
@@ -93,7 +93,7 @@ namespace ViewManagement
 
                 if (lastView == view)
                 {
-                    ShowView(view);
+                    OnShow(view);
                     return;
                 }
 
@@ -101,51 +101,60 @@ namespace ViewManagement
                 {
                     if (view.Mode == ViewMode.Swap)
                     {
-                        HideView(lastView);
+                        OnHide(lastView);
                     }
                     else
                     {
-                        ShowView(lastView);
+                        OnShow(lastView);
                     }
 
                     break;
                 }
-                
-                HideView(lastView);
+
+                OnHide(lastView);
                 activeViewsStack.RemoveAt(activeViewsStack.Count - 1);
             }
 
+            if (activeViewsStack.Count > 0 && view.Mode == ViewMode.Swap)
+            {
+                foreach (View activeView in activeViewsStack)
+                {
+                    activeView.Hide();
+                }
+            }
+
             activeViewsStack.Add(view);
-            ShowView(view);
+            OnShow(view);
         }
 
         private void OnBack()
         {
-            if (activeViewsStack.Count > 1)
+            if (activeViewsStack.Count == 0)
+                return;
+
+            if (activeViewsStack.Count == 1)
             {
-                View lastView = activeViewsStack[activeViewsStack.Count - 1];
-
-                if (activeViewsStack[activeViewsStack.Count - 1].Depth < lastView.Depth)
-                {
-                    HideView(lastView);
-                    ShowView(activeViewsStack[activeViewsStack.Count - 1], 2);
-                    return;
-                }
-
-                activeViewsStack.Add(lastView);
+                activeViewsStack[activeViewsStack.Count - 1].Exit();
+                return;
             }
 
-            activeViewsStack[activeViewsStack.Count - 1].Exit();
+            for (int i = activeViewsStack.Count - 1; i > 0; i--)
+            {
+                if (activeViewsStack[i].Mode == ViewMode.Overlay)
+                {
+                    activeViewsStack[i - 1].Show();
+                }
+            }
         }
 
-        private void ShowView(View view, int siblingOffset = 1)
+        private void OnShow(View view, int siblingOffset = 1)
         {
             int viewSiblingIndex = view.transform.parent.childCount - siblingOffset;
             view.transform.SetSiblingIndex(viewSiblingIndex);
             view.Show();
         }
 
-        private void HideView(View view)
+        private void OnHide(View view)
         {
             view.Hide();
         }
