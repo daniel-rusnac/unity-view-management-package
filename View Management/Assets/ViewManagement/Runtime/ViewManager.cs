@@ -16,7 +16,7 @@ namespace ViewManagement
 
         private readonly Dictionary<View, Action> actionByView = new Dictionary<View, Action>();
 
-        private void Start()
+        private void Awake()
         {
             InitializeViews();
         }
