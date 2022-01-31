@@ -1,6 +1,6 @@
 {
   "name": "com.danielrusnac.viewmanagement",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "displayName": "View Management",
   "author": 
   {
@@ -9,7 +9,7 @@
   },
   "dependencies": 
   {
-    "com.danielrusnac.soarchitecture": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.2.1"
+    "com.danielrusnac.soarchitecture": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.3.0"
   },
   "samples": 
   [

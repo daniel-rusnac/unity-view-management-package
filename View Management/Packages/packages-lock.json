@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.danielrusnac.soarchitecture": {
-      "version": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.2.1",
+      "version": "https://github.com/danielrusnac/unity-so-architecture-package.git?path=SO Architecture/Assets/SOArchitecture#v1.3.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f41ec9d7185694c092e337448bc93c5476f2c6fc"
+      "hash": "948058412ed8f40852216c2712b3c80c0a08b745"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
