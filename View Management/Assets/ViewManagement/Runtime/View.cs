@@ -20,15 +20,10 @@ namespace ViewManagement
         private int animationsCompleted;
         private ViewAnimation[] toggleAnimations;
 
-        public event Action onShown;
-        public event Action onHidden;
         public int Depth => depth;
         public VoidChannelSO ShowEvent => showEvent;
         public ViewMode Mode => mode;
         public ViewState State { get; private set; }
-
-        [Obsolete("Use [State.IsShown] instead.")]
-        public bool IsShown => State == ViewState.IsShown;
 
         public void Initialize()
         {
@@ -93,7 +88,6 @@ namespace ViewManagement
 
                 viewCallbacksController.OnShown();
 
-                onShown?.Invoke();
                 onComplete?.Invoke();
             }
         }
@@ -155,7 +149,6 @@ namespace ViewManagement
                 viewCallbacksController.OnHidden();
 
                 animationsCompleted = 0;
-                onHidden?.Invoke();
             }
         }
 

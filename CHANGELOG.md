@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - More tooltips
 
+### Removed
+
+- Removed deprecated `View.IsShown` property
+- Removed unused view events
+
 ## [2.0.1] - 2022-01-31
 
 ### Changed
