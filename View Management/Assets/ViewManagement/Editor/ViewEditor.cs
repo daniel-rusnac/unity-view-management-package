@@ -37,11 +37,8 @@ namespace ViewManagement
             
             base.OnInspectorGUI();
 
-            if (Application.isPlaying)
-            {
-                DrawButtons();
-            }
-            
+            DrawButtons();
+
             EditorGUI.BeginChangeCheck();
             {
                 DrawCallbacks(_view.viewCallbacksController);
@@ -55,6 +52,8 @@ namespace ViewManagement
 
         private void DrawButtons()
         {
+            GUI.enabled = Application.isPlaying;
+            
             EditorGUILayout.BeginHorizontal();
             {
                 if (GUILayout.Button("Show"))
@@ -68,6 +67,13 @@ namespace ViewManagement
                 }
             }
             EditorGUILayout.EndHorizontal();
+
+            GUI.enabled = true;
+
+            if (!Application.isPlaying)
+            {
+                EditorGUILayout.HelpBox("Only available at runtime!", MessageType.Info);
+            }
         }
 
         private void DrawCallbacks(ViewCallbacksController callbacksController)
