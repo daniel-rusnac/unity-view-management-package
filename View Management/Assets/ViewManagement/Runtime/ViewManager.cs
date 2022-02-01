@@ -8,7 +8,9 @@ namespace ViewManagement
     [AddComponentMenu(ViewUtilities.ADD_MENU + nameof(ViewManager))]
     public class ViewManager : MonoBehaviour
     {
+        [Tooltip("The back event for every UI. Escape button also works.")]
         [SerializeField] private VoidChannelSO backEventChannel;
+        [Tooltip("The view that will be shown by default. Can be left empty.")]
         [SerializeField] private View startView;
         [SerializeField] private View[] views;
 

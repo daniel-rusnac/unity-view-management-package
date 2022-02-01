@@ -9,8 +9,11 @@ namespace ViewManagement
     [DisallowMultipleComponent]
     public class View : MonoBehaviour
     {
+        [Tooltip("The depth of the view in stack. Higher depth means that it will remember the previous view and will show it when pressing back.")]
         [SerializeField] private int depth;
+        [Tooltip("The event to be fired for this view to be shown.")]
         [SerializeField] private VoidChannelSO showEvent;
+        [Tooltip("How should the view be drawn relative to the last active view.")]
         [SerializeField] private ViewMode mode;
         [HideInInspector] public ViewCallbacksController viewCallbacksController = new ViewCallbacksController();
         

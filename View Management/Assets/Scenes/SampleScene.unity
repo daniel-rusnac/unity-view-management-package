@@ -203,11 +203,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6acc6d963e95d164da1dccf7ab91f8c9, type: 2}
     - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: viewCallbacksController.drawExit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: viewCallbacksController.drawHide
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: viewCallbacksController.drawShow
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: viewCallbacksController.drawShown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
       propertyPath: viewCallbacksController.drawHidden
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
+      propertyPath: viewCallbacksController.drawInitialize
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6098226254771679096, guid: 960422985c5480f4f92223039c805e8f, type: 3}
