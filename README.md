@@ -23,6 +23,8 @@ There are 4 main components to this system:
 
 The view are shown and hidden when the corresponding channels send an event. The *ViewManager* itslef has a *Back Channel*, which will go back in the view stack as long as the *Depth* of the previous *View* is lower that the current one.
 
+You can add components to a game object by pressing *Add Component/View Management*.
+
 ### Animations and Callbacks
 
 - To add animations to you views, inherit from *ViewAnimation* or make use of the simple default animation component *CascadeViewAnimation*. You can also inport the animation samples that use DoTween to animate the elements.
