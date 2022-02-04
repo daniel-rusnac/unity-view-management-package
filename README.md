@@ -9,9 +9,9 @@ This package depends on [Sriptable Object Architecture](https://github.com/danie
 When all dependencies are resolved:
 - Go to *Window/Package Manager*
 - Click on *+ Add package from git URL...*
-- Paste link for the wanted version.
+- Paste the link for the wanted version.
 
-To get a specific verion of the package, go to releases and copy the "Package Link".
+To get a specific version of the package, go to releases and copy the "Package Link".
 
 ## Usage
 
