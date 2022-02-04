@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace ViewManagement.Components
 {
+    /// <summary>
+    /// Blocks the view during animations.
+    /// </summary>
     [AddComponentMenu(ViewUtilities.COMPONENTS_SUB_MENU + nameof(ViewBlocker))]
     public class ViewBlocker : ViewCallbacks
     {
