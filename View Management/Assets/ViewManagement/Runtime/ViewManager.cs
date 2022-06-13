@@ -8,6 +8,7 @@ namespace ViewManagement
     [AddComponentMenu(ViewUtilities.ADD_MENU + nameof(ViewManager))]
     public class ViewManager : MonoBehaviour
     {
+        [SerializeField] private InitializationMode initializationMode = InitializationMode.Start;
         [Tooltip("The back event for every UI. Escape button also works.")]
         [SerializeField] private VoidChannelSO backEventChannel;
         [Tooltip("The view that will be shown by default. Can be left empty.")]
@@ -20,7 +21,14 @@ namespace ViewManagement
 
         private void Awake()
         {
-            InitializeViews();
+            if (initializationMode == InitializationMode.Awake)
+                Initialize();
+        }
+
+        private void Start()
+        {
+            if (initializationMode == InitializationMode.Start)
+                Initialize();
         }
 
         private void Update()
@@ -52,7 +60,7 @@ namespace ViewManagement
             }
         }
 
-        private void InitializeViews()
+        public void Initialize()
         {
             HashSet<VoidChannelSO> registeredChannels = new HashSet<VoidChannelSO>();
             registeredChannels.Add(backEventChannel);
