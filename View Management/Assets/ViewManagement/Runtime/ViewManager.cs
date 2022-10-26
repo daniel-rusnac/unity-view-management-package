@@ -13,6 +13,7 @@ namespace ViewManagement
         [SerializeField] private VoidChannelSO backEventChannel;
         [Tooltip("The view that will be shown by default. Can be left empty.")]
         [SerializeField] private View startView;
+        [SerializeField] private KeyCode _backKey = KeyCode.None;
         [SerializeField] private View[] views;
 
         public readonly List<View> activeViewsStack = new List<View>();
@@ -33,7 +34,7 @@ namespace ViewManagement
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(_backKey))
             {
                 OnBack();
             }
