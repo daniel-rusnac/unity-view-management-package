@@ -1,7 +1,11 @@
 {
   "name": "com.danielrusnac.viewmanagement",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "displayName": "View Management",
+  "description": "A simple UI management system using scriptable objects and views.",
+  "documentationUrl": "https://github.com/danielrusnac/unity-view-management-package/blob/v2.1.0/README.md",
+  "changelogUrl": "https://github.com/danielrusnac/unity-view-management-package/blob/v2.1.0/CHANGELOG.md",
+  "licensesUrl": "https://github.com/danielrusnac/unity-view-management-package/blob/v2.1.0/LICENSE",
   "author": 
   {
     "name": "Daniel Rusnac",
